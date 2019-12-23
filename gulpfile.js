@@ -81,11 +81,12 @@
   requireTask(`${cfg.task.esLint}`, `./${cfg.folder.tasks}/`);
 
   /**
-   * Build custom js
+   * Build js
    */
-  requireTask(`${cfg.task.buildCustomJs}`, `./${cfg.folder.tasks}/`, {
+  requireTask(`${cfg.task.buildJs}`, `./${cfg.folder.tasks}/`, {
     dest: cfg.folder.build,
     mainJs: cfg.file.mainJs,
+    publicJs: cfg.file.publicJs,
   });
 
   /**
@@ -145,7 +146,7 @@
     browserSync,
     tasks: {
       esLint: cfg.task.esLint,
-      buildCustomJs: cfg.task.buildCustomJs,
+      buildJs: cfg.task.buildJs,
       buildSass: cfg.task.buildSass,
       buildSassCustom: cfg.task.buildSassCustom,
       fileInclude: cfg.task.fileInclude,
@@ -170,7 +171,7 @@
         cfg.task.buildStylesVendors,
       ),
       gulp.series(
-        cfg.task.buildCustomJs,
+        cfg.task.buildJs,
         cfg.task.buildJsVendors,
       ),
     ),
@@ -197,7 +198,7 @@
         cfg.task.buildStylesVendors,
       ),
       gulp.series(
-        cfg.task.buildCustomJs,
+        cfg.task.buildJs,
         cfg.task.buildJsVendors,
       ),
     )
